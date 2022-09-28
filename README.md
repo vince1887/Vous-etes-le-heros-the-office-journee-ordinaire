@@ -11,4 +11,4 @@
 
 ## Diagramme
 
-![diagramme]()
+![diagramme](assets/schema_blank.png)
