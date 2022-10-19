@@ -31,7 +31,7 @@ html {
   flex-direction: column;
   justify-content: space-around;
   width: 500px;
-  height: 500px;
+  height: 600px;
   background-color: var(--gameColor);
   border-radius: 25px;
   padding: 30px;
