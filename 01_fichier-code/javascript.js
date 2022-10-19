@@ -89,13 +89,15 @@ function goToChapter(chapterName) {
   //point 1,2,(3)
   let title = chapterName.subtitle;
   let subtitleText = chapterName.text;
+  let image = chapterName.img;
 
   let titleHtml = document.querySelector("h2");
   let subtitleHtml = document.getElementsByClassName("paragraphe");
+  let imageHtml = document.getElementByClassName("images-mid");
 
   titleHtml.innerText = title;
   subtitleHtml.innerText = subtitleText;
-
+  imageHtml.innerHTML = "<img src='" + image + "' class='images-mid'>";
   //point 4
   let optionArr = chapterName.options;
 }
