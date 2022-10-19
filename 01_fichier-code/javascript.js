@@ -86,6 +86,15 @@ let chapterObj = {
 };
 
 function goToChapter(chapterName) {
+  let title = chapterName.subtitle;
+  let subtitleText = chapterName.text;
+
+  let titleHtml = document.querySelector("h2");
+  let subtitleHtml = document.getElementsByClassName("paragraphe");
+
+  titleHtml.innerText = title;
+  subtitleHtml.innerText = subtitleText;
+
   console.log(chapterName.subtitle);
   console.log(chapterName.text);
   console.log(chapterName.img);
