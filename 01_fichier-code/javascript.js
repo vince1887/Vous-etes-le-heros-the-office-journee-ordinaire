@@ -86,6 +86,7 @@ let chapterObj = {
 };
 
 function goToChapter(chapterName) {
+  //point 1,2,(3)
   let title = chapterName.subtitle;
   let subtitleText = chapterName.text;
 
@@ -95,7 +96,7 @@ function goToChapter(chapterName) {
   titleHtml.innerText = title;
   subtitleHtml.innerText = subtitleText;
 
-  console.log(chapterName.subtitle);
-  console.log(chapterName.text);
-  console.log(chapterName.img);
+  //point 4
+  let optionArr = chapterName.option;
+  for
 }
