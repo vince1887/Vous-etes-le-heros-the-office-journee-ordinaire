@@ -95,7 +95,7 @@ function goToChapter(chapterName) {
   let subtitleText = chapterName.text;
   let image = chapterName.img;
 
-  let titleHtml = document.querySelector("h2");
+  let titleHtml = document.querySelector("h3");
   let subtitleHtml = document.getElementsByClassName("paragraphe");
   let imageHtml = document.getElementsByClassName("images-mid");
 
