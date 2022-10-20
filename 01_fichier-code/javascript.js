@@ -15,7 +15,7 @@ let chapterObj = {
     option: [
       {
         text: "Merci Jim!",
-        action: goToChapter("michealEnterDesk"),
+        action: activationTasse(),
       },
     ],
   }),
@@ -65,8 +65,8 @@ let chapterObj = {
     text: "Attention! as-tu saluer Jim se matin?? Car si oui tu vas pouvoir te fair un café, si non tu ne pourras pas ",
     img: "imgMachinecafe.png",
     options: (optionsArr = [
-      { text: "oui", action: goToChapter("michealFaitCafe") },
-      { text: "non", action: goToChapter("michealPasCafe") },
+      { text: "oui", action: verificationTasse() },
+      { text: "non", action: verificationTasse() },
     ]),
   }),
   michealFaitCafe: (michealFaitCafe = {
@@ -113,5 +113,21 @@ function goToChapter(chapterName) {
     btnChoix.setAttribute("class", "btn");
     btnChoix.setAttribute("onclick", "this.action");
     parent.appendChild(btnChoix);
+  }
+}
+
+//partie 3.2
+
+let coffeCupFound = false;
+function activationTasse() {
+  coffeCupFound = true;
+  goToChapter(michealEnterDesk);
+}
+
+function verificationTasse() {
+  if (coffeCupFound == true) {
+    goToChapter(michealFaitCafe);
+  } else {
+    goToChapter(michealPasCafe);
   }
 }
