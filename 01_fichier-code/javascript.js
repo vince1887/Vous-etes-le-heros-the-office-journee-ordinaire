@@ -12,10 +12,12 @@ let chapterObj = {
     subtitle: "Hey Jim bon matin!",
     text: "salut Micheal voici cette magnifique tasse!!",
     img: "imgTasse.png",
-    option: {
-      text: "Merci Jim!",
-      action: goToChapter("michealEnterDesk"),
-    },
+    option: [
+      {
+        text: "Merci Jim!",
+        action: goToChapter("michealEnterDesk"),
+      },
+    ],
   }),
   michealEnterDesk: (michealEnterDesk = {
     subtitle: "Bon je dois me mettre au travail maintenant.",
@@ -62,10 +64,10 @@ let chapterObj = {
       "Maintenant que tu as tasser Dwight de ton chemin, tu veux te faire une tasse de café.",
     text: "Attention! as-tu saluer Jim se matin?? Car si oui tu vas pouvoir te fair un café, si non tu ne pourras pas ",
     img: "imgMachinecafe.png",
-    options: [
+    options: (optionsArr = [
       { text: "oui", action: goToChapter("michealFaitCafe") },
       { text: "non", action: goToChapter("michealPasCafe") },
-    ],
+    ]),
   }),
   michealFaitCafe: (michealFaitCafe = {
     subtitle: "Tu te fais un café",
@@ -85,19 +87,31 @@ let chapterObj = {
   }),
 };
 
+//partie 3.1 et 3.2
+
 function goToChapter(chapterName) {
-  //point 1,2,(3)
+  //point 1,2,3
   let title = chapterName.subtitle;
   let subtitleText = chapterName.text;
   let image = chapterName.img;
 
   let titleHtml = document.querySelector("h2");
   let subtitleHtml = document.getElementsByClassName("paragraphe");
-  let imageHtml = document.getElementByClassName("images-mid");
+  let imageHtml = document.getElementsByClassName("images-mid");
 
   titleHtml.innerText = title;
   subtitleHtml.innerText = subtitleText;
   imageHtml.innerHTML = "<img src='" + image + "' class='images-mid'>";
+
   //point 4
   let optionArr = chapterName.options;
+
+  for (let i = 0; i < optionArr.length; i++) {
+    let parent = document.getElementByClass("btnGoupe");
+    let btnChoix = document.createElement("button");
+    btnChoix.innerText = this.text;
+    btnChoix.setAttribute("class", "btn");
+    btnChoix.setAttribute("onclick", "this.action");
+    parent.appendChild(btnChoix);
+  }
 }
