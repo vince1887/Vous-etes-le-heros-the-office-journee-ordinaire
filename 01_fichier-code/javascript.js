@@ -93,6 +93,9 @@ function goToChapter(chapterName) {
   let chapterTitle = document.querySelector(".chapter-title");
   let chapterText = document.querySelector(".chapter-text");
 
+  chapterTitle.innerText = chapterObj[chapterName].subtitle;
+  chapterText.innerText = chapterObj[chapterName].text;
+
   let chapterImgContainer = document.querySelector(".images-mid");
   let imgTag = `<img src="asset/${chapterObj[chapterName].img}" class="image-mid">`;
   chapterImgContainer.innerHTML = imgTag;
