@@ -115,18 +115,21 @@ function goToChapter(chapterName) {
   }
 }
 
+goToChapter("michealEnterOffice");
+
 //verification tasse caffé
 
 let coffeCupFound = false;
-function activationTasse() {
+
+let activationTasse = function () {
   coffeCupFound = true;
   goToChapter(michealEnterDesk);
-}
+};
 
-function verificationTasse() {
-  if (coffeCupFound == true) {
+let verificationTasse = function () {
+  if (coffeCupFound) {
     goToChapter(michealFaitCafe);
   } else {
     goToChapter(michealPasCafe);
   }
-}
+};
