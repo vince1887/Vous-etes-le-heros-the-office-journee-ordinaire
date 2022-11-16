@@ -116,6 +116,8 @@ function goToChapter(chapterName) {
       buttonPanel.insertAdjacentHTML("beforeend", buttonTag);
     }
   }
+
+  localStorage.setItem("chapterOngoing", chapterObj[chapterName]);
 }
 
 goToChapter("michealEnterOffice");
@@ -127,12 +129,32 @@ let coffeCupFound = false;
 let activationTasse = function () {
   coffeCupFound = true;
   goToChapter(michealEnterDesk);
+
+  localStorage.setItem("tassetrouve", true);
 };
 
 let verificationTasse = function () {
-  if (coffeCupFound) {
+  if (coffeCupFound == true) {
     goToChapter(michealFaitCafe);
   } else {
     goToChapter(michealPasCafe);
   }
 };
+
+//verification onload de la page si local storage "existe"
+
+document.addEventListener("DOMContentLoaded", function () {
+  let verifLocalStorageChapter = localStorage.getItem("chapterOngoing");
+  if (verifLocalStorageChapter) {
+    goToChapter(chapterObj[verifLocalStorageChapter]);
+  } else {
+    goToChapter(michealEnterOffice);
+  }
+
+  let verifTasseTrouver = localStorage.getItem("tasseTrouve");
+  if (verifTasseTrouver == true) {
+    coffeCupFound = true;
+  } else {
+    coffeCupFound = false;
+  }
+});
