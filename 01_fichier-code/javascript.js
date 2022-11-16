@@ -3,7 +3,7 @@ let chapterObj = {
     subtitle: "Bon matin!",
     text: "Micheal apperçoit Jim! va t-il le saluer ou il l'ignore?",
     img: "imgChap1.png",
-    options: [
+    option: [
       { text: "Il le salut", action: goToChapter("activationTasse") },
       { text: "Il l'ignore", action: goToChapter("michealEnterDesk") },
     ],
@@ -23,7 +23,7 @@ let chapterObj = {
     subtitle: "Bon je dois me mettre au travail maintenant.",
     text: "J'entend un bruit?? ohhh c'est Dwight qui cogne à ma porte.",
     img: "imgdesk.png",
-    options: [
+    option: [
       { text: "Il lui ouvre la porte", action: goToChapter("dwightEnterDesk") },
       { text: "Il l'ignore", action: goToChapter("michealFallAslepp") },
     ],
@@ -32,7 +32,7 @@ let chapterObj = {
     subtitle: "Tu t'es endormie!",
     text: "Tu n'as pas pris ton café, donc tu t'es endormie.",
     img: "imgasleep.png",
-    options: [
+    option: [
       {
         text: "Recommence ta journée",
         action: goToChapter("michealEnterOffice"),
@@ -43,7 +43,7 @@ let chapterObj = {
     subtitle: "Dwight entre dans ton bureau",
     text: "Bon matin Micheal! Si tu veux on peut aller sur ma ferme de betrave aujourd'hui.",
     img: "imgferme.png",
-    options: [
+    option: [
       { text: "Non je ne peut pas", action: goToChapter("michealExcuseCafe") },
       { text: "Bien sur!", action: goToChapter("farmDay") },
     ],
@@ -52,7 +52,7 @@ let chapterObj = {
     subtitle: "Tu passe la journée a la ferme de Dwight",
     text: "Tu n'as pas accomplie tes tâches de la journée",
     img: "imgferme.png",
-    options: [
+    option: [
       {
         text: "Tu dois reccomencer ta journée",
         action: goToChapter("michealEnterOffice"),
@@ -64,7 +64,7 @@ let chapterObj = {
       "Maintenant que tu as tasser Dwight de ton chemin, tu veux te faire une tasse de café.",
     text: "Attention! as-tu saluer Jim se matin?? Car si oui tu vas pouvoir te fair un café, si non tu ne pourras pas ",
     img: "imgMachinecafe.png",
-    options: (optionsArr = [
+    option: (optionsArr = [
       { text: "oui", action: verificationTasse() },
       { text: "non", action: verificationTasse() },
     ]),
@@ -73,7 +73,7 @@ let chapterObj = {
     subtitle: "Tu te fais un café",
     text: "Grace à cette tasse de café tu vas pouvoir accomplir toutes tes tâches de la journée!!",
     img: "imgVictoire.png",
-    options: [
+    option: [
       { text: "Tu as réussi!!", action: goToChapter("michealEnterOffice") },
     ],
   }),
@@ -81,7 +81,7 @@ let chapterObj = {
     subtitle: "Tu as oublier ta tasse favorite à la maison.",
     text: "Si tu avais salué Jim il t'aurai remis une tasse en guise de cadeau. Meilleur chance la prochiane fois.",
     img: "imgdefaite.png",
-    options: [
+    option: [
       { text: "reccomencer", action: goToChapter("michealEnterOffice") },
     ],
   }),
@@ -137,4 +137,25 @@ function goToChapter(chapterName) {
   let game = document.querySelector(".game");
   let chapterTitle = document.querySelector(".chapter-title");
   let chapterText = document.querySelector(".chapter-text");
+
+  let chapterImgContainer = document.querySelector(".images-mid");
+  let imgTag = `<img src="asset/${chapterObj[chapterName].img}" class="image-mid">`;
+  chapterImgContainer.innerHTML = imgTag;
+
+  let optionArr = chapterObj[chapterName].option;
+  let buttonPanel = document.querySelector(".btnGroupe");
+  let buttonTag;
+  let optionText;
+  let optionAction;
+
+  for (var i = 0; i < optionArr.length; i++) {
+    optionText = optionArr[i].text;
+    optionAction = optionArr[i].action;
+    buttonTag = `<button class="btn" onclick="${optionAction}">${optionText}</button>`;
+    if (i == 0) {
+      buttonPanel.innerHTML = buttonTag;
+    } else {
+      buttonPanel;
+    }
+  }
 }
