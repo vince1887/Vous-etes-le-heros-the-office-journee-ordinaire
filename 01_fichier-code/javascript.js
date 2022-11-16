@@ -90,8 +90,8 @@ let chapterObj = {
 // nouvelle version (corriger)
 function goToChapter(chapterName) {
   let game = document.querySelector(".game");
-  let chapterTitle = document.querySelector(".chapter-title");
-  let chapterText = document.querySelector(".chapter-text");
+  let chapterTitle = game.querySelector(".chapter-title");
+  let chapterText = game.querySelector(".chapter-text");
 
   chapterTitle.innerText = chapterObj[chapterName].subtitle;
   chapterText.innerText = chapterObj[chapterName].text;
