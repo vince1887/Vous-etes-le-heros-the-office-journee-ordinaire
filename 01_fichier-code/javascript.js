@@ -87,52 +87,7 @@ let chapterObj = {
   }),
 };
 
-//partie 3.1 et 3.2
-
-function goToChapter(chapterName) {
-  //point 1,2,3
-  let title = chapterObj[chapterName].subtitle;
-  let subtitleText = chapterObj[chapterName].text;
-  let image = chapterObj[chapterName].img;
-
-  let titleHtml = document.querySelector("h3");
-  let subtitleHtml = document.getElementsByClassName("paragraphe");
-  let imageHtml = document.getElementsByClassName("images-mid");
-
-  titleHtml.innerText = title;
-  subtitleHtml.innerText = subtitleText;
-  imageHtml.innerHTML = "<img src='" + image + "' class='images-mid'>";
-
-  //point 4
-  let optionArr = chapterObj[chapterName].options;
-
-  for (let i = 0; i < optionArr.length; i++) {
-    let parent = document.getElementByClass("btnGoupe");
-    let btnChoix = document.createElement("button");
-    btnChoix.innerText = this.text;
-    btnChoix.setAttribute("class", "btn");
-    btnChoix.setAttribute("onclick", "this.action");
-    parent.appendChild(btnChoix);
-  }
-}
-
-//partie 3.2
-
-let coffeCupFound = false;
-function activationTasse() {
-  coffeCupFound = true;
-  goToChapter(michealEnterDesk);
-}
-
-function verificationTasse() {
-  if (coffeCupFound == true) {
-    goToChapter(michealFaitCafe);
-  } else {
-    goToChapter(michealPasCafe);
-  }
-}
-
-// nouvelle version (corriger prof)
+// nouvelle version (corriger)
 function goToChapter(chapterName) {
   let game = document.querySelector(".game");
   let chapterTitle = document.querySelector(".chapter-title");
@@ -155,7 +110,23 @@ function goToChapter(chapterName) {
     if (i == 0) {
       buttonPanel.innerHTML = buttonTag;
     } else {
-      buttonPanel;
+      buttonPanel.insertAdjacentHTML("beforeend", buttonTag);
     }
+  }
+}
+
+//verification tasse caffé
+
+let coffeCupFound = false;
+function activationTasse() {
+  coffeCupFound = true;
+  goToChapter(michealEnterDesk);
+}
+
+function verificationTasse() {
+  if (coffeCupFound == true) {
+    goToChapter(michealFaitCafe);
+  } else {
+    goToChapter(michealPasCafe);
   }
 }
