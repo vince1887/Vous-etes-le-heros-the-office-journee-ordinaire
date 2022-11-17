@@ -109,7 +109,7 @@ function goToChapter(chapterName) {
 
   //verify si video existe
 
-  if (chapterObj[chapterName].hasOwnProperty("video") == true) {
+  if (chapterObj[chapterName].hasOwnProperty("video")) {
     let videoTag = `<video src="${chapterObj[chapterName].video}" class="image-mid loop muted autoplay playinline `;
   } else {
     let imgTag = `<img src="asset/${chapterObj[chapterName].img}" class="image-mid">`;
