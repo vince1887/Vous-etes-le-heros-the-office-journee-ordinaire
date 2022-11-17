@@ -93,8 +93,9 @@ let chapterObj = {
 function goToChapter(chapterName) {
   //déclanchement audio
   const soundEffectMicheal = new Audio(
-    "assets/audio/micheal-scott-thank-you-sound-effect.mp3"
+    "assets/audio/michael-scott-thank-you-sound-effect.mp3"
   );
+
   soundEffectMicheal.play();
 
   let game = document.querySelector(".game");
