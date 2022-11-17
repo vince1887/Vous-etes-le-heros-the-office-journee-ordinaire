@@ -12,6 +12,7 @@ let chapterObj = {
     subtitle: "Hey Jim bon matin!",
     text: "salut Micheal voici cette magnifique tasse!!",
     img: "imgTasse.png",
+    video: "assets/video/micheal_yes.mp4",
     option: [
       {
         text: "Merci Jim!",
@@ -32,6 +33,7 @@ let chapterObj = {
     subtitle: "Tu t'es endormie!",
     text: "Tu n'as pas pris ton café, donc tu t'es endormie.",
     img: "imgasleep.png",
+    video: "assets/video/micheal_no_god.mp4",
     option: [
       {
         text: "Recommence ta journée",
@@ -97,8 +99,15 @@ function goToChapter(chapterName) {
   chapterText.innerText = chapterObj[chapterName].text;
 
   let chapterImgContainer = document.querySelector(".images-mid");
-  let imgTag = `<img src="asset/${chapterObj[chapterName].img}" class="image-mid">`;
-  chapterImgContainer.innerHTML = imgTag;
+
+  //verify si video existe
+
+  if (chapterObj[chapterName].hasOwnProperty("video") == true) {
+    let videoTag = `<video src="${chapterObj[chapterName].video}" class="image-mid loop muted autoplay playinline `;
+  } else {
+    let imgTag = `<img src="asset/${chapterObj[chapterName].img}" class="image-mid">`;
+    chapterImgContainer.innerHTML = imgTag;
+  }
 
   let optionArr = chapterObj[chapterName].option;
   let buttonPanel = document.querySelector(".btnGroupe");
