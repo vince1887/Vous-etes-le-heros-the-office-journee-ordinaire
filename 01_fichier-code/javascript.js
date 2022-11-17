@@ -91,6 +91,12 @@ let chapterObj = {
 
 // nouvelle version (corriger)
 function goToChapter(chapterName) {
+  //déclanchement audio
+  const soundEffectMicheal = new Audio(
+    "assets/audio/micheal-scott-thank-yousound-effect.mp3"
+  );
+  soundEffectMicheal.play();
+
   let game = document.querySelector(".game");
   let chapterTitle = game.querySelector(".chapter-title");
   let chapterText = game.querySelector(".chapter-text");
