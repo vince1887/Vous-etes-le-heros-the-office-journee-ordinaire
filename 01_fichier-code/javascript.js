@@ -95,9 +95,11 @@ function goToChapter(chapterName) {
   const soundEffectMicheal = new Audio(
     "assets/audio/michael-scott-thank-you-sound-effect.mp3"
   );
-
+  soundEffectMicheal.currentTime = 0;
   soundEffectMicheal.play();
 
+  localStorage.setItem("chapterOngoing", chapterName);
+  
   let game = document.querySelector(".game");
   let chapterTitle = game.querySelector(".chapter-title");
   let chapterText = game.querySelector(".chapter-text");
@@ -133,8 +135,6 @@ function goToChapter(chapterName) {
       buttonPanel.insertAdjacentHTML("beforeend", buttonTag);
     }
   }
-
-  localStorage.setItem("chapterOngoing", chapterObj[chapterName]);
 }
 
 goToChapter("michealEnterOffice");
@@ -146,12 +146,11 @@ let coffeCupFound = false;
 let activationTasse = function () {
   coffeCupFound = true;
   goToChapter(michealEnterDesk);
-
   localStorage.setItem("tassetrouve", true);
 };
 
 let verificationTasse = function () {
-  if (coffeCupFound == true) {
+  if (coffeCupFound) {
     goToChapter(michealFaitCafe);
   } else {
     goToChapter(michealPasCafe);
@@ -162,14 +161,14 @@ let verificationTasse = function () {
 
 document.addEventListener("DOMContentLoaded", function () {
   let verifLocalStorageChapter = localStorage.getItem("chapterOngoing");
-  if (verifLocalStorageChapter) {
-    goToChapter(chapterObj[verifLocalStorageChapter]);
-  } else {
+  if (verifLocalStorageChapter == null) {
     goToChapter(michealEnterOffice);
+  } else {
+    goToChapter(chapterObj[verifLocalStorageChapter]);
   }
 
   let verifTasseTrouver = localStorage.getItem("tasseTrouve");
-  if (verifTasseTrouver == true) {
+  if (verifTasseTrouver) {
     coffeCupFound = true;
   } else {
     coffeCupFound = false;
