@@ -168,9 +168,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   let verifTasseTrouver = localStorage.getItem("tasseTrouve");
-  if (verifTasseTrouver) {
-    coffeCupFound = true;
-  } else {
+  if (verifTasseTrouver == null) {
     coffeCupFound = false;
+  } else {
+    coffeCupFound = boolean(verifTasseTrouver);
   }
 });
