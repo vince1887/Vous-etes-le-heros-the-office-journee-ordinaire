@@ -108,9 +108,10 @@ function goToChapter(chapterName) {
   let chapterImgContainer = document.querySelector(".images-mid");
 
   //verify si video existe
-
-  if (chapterObj[chapterName].hasOwnProperty("video")) {
+   
+  if (chapterObj[chapterName].video != undefined) {
     let videoTag = `<video src="${chapterObj[chapterName].video}" class="image-mid loop muted autoplay playinline `;
+    chapterImgContainer.innerHTML = videoTag; 
   } else {
     let imgTag = `<img src="asset/${chapterObj[chapterName].img}" class="image-mid">`;
     chapterImgContainer.innerHTML = imgTag;
