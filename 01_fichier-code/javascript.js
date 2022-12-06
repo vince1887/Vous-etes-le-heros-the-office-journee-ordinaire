@@ -174,3 +174,10 @@ document.addEventListener("DOMContentLoaded", function () {
     coffeCupFound = boolean(verifTasseTrouver);
   }
 });
+
+//effacer la partie / reset
+let reset = function(){
+   coffeCupFound = false;
+   localStorage.clear();
+   goToChapter(michealEnterOffice);
+};
