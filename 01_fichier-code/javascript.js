@@ -91,7 +91,8 @@ let chapterObj = {
 
 //audio status 
 let audioOn = true;
-
+let checkboxAudio = document.querySelector(".checkbox-audio");
+audioOn = checkboxAudio.checked;
 // nouvelle version (corriger)
 function goToChapter(chapterName) {
   //déclanchement audio
