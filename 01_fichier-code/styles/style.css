@@ -1,10 +1,10 @@
 @font-face {
-  src: url(../font/Pixeboy-z8XGD.ttf) format("truetype");
+  src: url(../assets/font/Pixeboy-z8XGD.ttf) format("truetype");
   font-family: "retro";
 }
 @font-face {
   font-family: "office-font";
-  src: url(../font/AmericanTypewriter_Medium.ttf) format("truetype");
+  src: url(../assets/font/AmericanTypewriter_Medium.ttf) format("truetype");
 }
 
 * {
@@ -119,4 +119,19 @@ h3 {
   width: 100px;
   position: absolute;
   top: 0;
+}
+
+.btn-reset {
+  margin-top: 10px;
+  margin-left: 10px;
+  width: 150px;
+  height: 40px;
+  font-family: "retro";
+  font-size:15px;
+  background-color: var(--btnColor);
+  border: none;
+  border-radius: 5px;
+  height: 40px;
+  padding: 0.5em;
+}
 }
