@@ -89,14 +89,23 @@ let chapterObj = {
   },
 };
 
+//audio status 
+let audioOn = true;
+
 // nouvelle version (corriger)
 function goToChapter(chapterName) {
   //déclanchement audio
   const soundEffectMicheal = new Audio(
     "assets/audio/michael-scott-thank-you-sound-effect.mp3"
   );
-  soundEffectMicheal.currentTime = 0;
-  soundEffectMicheal.play();
+audioOn = localStorage.getItem("audio-status");
+  if(audioOn == true){
+    soundEffectMicheal.currentTime = 0;
+    soundEffectMicheal.play();
+  }else {
+    soundEffectMicheal.pause();
+  }
+  localStorage.setItem("audio-status", audioOn);
 
   localStorage.setItem("chapterOngoing", chapterName);
   
@@ -184,5 +193,4 @@ btnReset.addEventListener("click", function(){
 });
 
 
-//audio status 
-let audioStatus = true;
+
