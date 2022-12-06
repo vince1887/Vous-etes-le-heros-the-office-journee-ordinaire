@@ -20,7 +20,7 @@ let chapterObj = {
       },
     ],
   },
-  michealEnterDesk:  {
+  michealEnterDesk :  {
     subtitle: "Bon je dois me mettre au travail maintenant.",
     text: "J'entend un bruit?? ohhh c'est Dwight qui cogne à ma porte.",
     img: "imgdesk.png",
