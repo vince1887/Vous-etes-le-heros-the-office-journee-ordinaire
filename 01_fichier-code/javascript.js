@@ -175,9 +175,14 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-//effacer la partie / reset
-let reset = function(){
-   coffeCupFound = false;
-   localStorage.clear();
-   goToChapter(michealEnterOffice);
-};
+// bouton et fonction reset
+let btnReset = document.querySelector(".btn-reset");
+btnReset.addEventListener("click", function(){
+  coffeCupFound = false;
+  localStorage.clear();
+  goToChapter(michealEnterOffice);
+});
+
+
+//audio status 
+let audioStatus = true;

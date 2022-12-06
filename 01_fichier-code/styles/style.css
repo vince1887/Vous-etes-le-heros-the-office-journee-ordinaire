@@ -122,6 +122,9 @@ h3 {
 }
 
 .btn-reset {
+  position: relative;
+  top: 10px;
+  left: 10px;
   color: var(--txtColor);
   margin-top: 10px;
   margin-left: 10px;
@@ -135,5 +138,11 @@ h3 {
   height: 40px;
   padding: 0.5em;
   letter-spacing: 0.1em;
+  transition-property: background-color, color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
 }
+.btn-reset:hover {
+  background-color: var(--txtColor);
+  color: var(--btnColor);
 }
