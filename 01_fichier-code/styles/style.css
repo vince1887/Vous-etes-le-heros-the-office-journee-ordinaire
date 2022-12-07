@@ -131,7 +131,7 @@ h3 {
   width: 120px;
   height: 40px;
   font-family: "retro";
-  font-size:15px;
+  font-size: 15px;
   background-color: var(--btnColor);
   border: none;
   border-radius: 5px;
@@ -147,8 +147,12 @@ h3 {
   color: var(--btnColor);
 }
 
-.son{
+.son {
   color: var(--txtColor);
   position: relative;
-  top:-2px;
+  top: -2px;
+}
+
+label.son-groupe {
+  width: 50px;
 }
