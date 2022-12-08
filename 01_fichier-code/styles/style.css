@@ -156,3 +156,17 @@ h3 {
 label.son-groupe {
   width: 50px;
 }
+
+.if-js-marche-pas {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+body.style1 .game {
+  background-color: rgb(202, 65, 61);
+}
+
+body.style1 html {
+  background-color: black;
+}

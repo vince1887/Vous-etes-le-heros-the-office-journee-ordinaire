@@ -1,4 +1,18 @@
-let chapterObj = {
+//changer de style avec radio
+let radioStyle = document.querySelectorAll(".style-option");
+radioStyle.forEach(function (radio) {
+  radio.addEventListener("change", function () {
+    let body = document.querySelector("body");
+    if (radio.value == "style1") {
+      body.classList.add("style1");
+      body.classList.remove("style2");
+    } else {
+      body.classList.add("style2");
+      body.classList.remove("style1");
+    }
+  });
+});
+var chapterObj = {
   michealEnterOffice: {
     subtitle: "Bon matin!",
     text: "Micheal apperçoit Jim! va t-il le saluer ou il l'ignore?",
@@ -8,7 +22,7 @@ let chapterObj = {
       { text: "Il l'ignore", action: goToChapter("michealEnterDesk") },
     ],
   },
-  activationTasse:  {
+  activationTasse: {
     subtitle: "Hey Jim bon matin!",
     text: "salut Micheal voici cette magnifique tasse!!",
     img: "imgTasse.png",
@@ -20,7 +34,7 @@ let chapterObj = {
       },
     ],
   },
-  michealEnterDesk :  {
+  michealEnterDesk: {
     subtitle: "Bon je dois me mettre au travail maintenant.",
     text: "J'entend un bruit?? ohhh c'est Dwight qui cogne à ma porte.",
     img: "imgdesk.png",
@@ -29,7 +43,7 @@ let chapterObj = {
       { text: "Il l'ignore", action: goToChapter("michealFallAslepp") },
     ],
   },
-  michealFallAslepp:  {
+  michealFallAslepp: {
     subtitle: "Tu t'es endormie!",
     text: "Tu n'as pas pris ton café, donc tu t'es endormie.",
     img: "imgasleep.png",
@@ -41,7 +55,7 @@ let chapterObj = {
       },
     ],
   },
-  dwightEnterDesk:  {
+  dwightEnterDesk: {
     subtitle: "Dwight entre dans ton bureau",
     text: "Bon matin Micheal! Si tu veux on peut aller sur ma ferme de betrave aujourd'hui.",
     img: "imgferme.png",
@@ -50,7 +64,7 @@ let chapterObj = {
       { text: "Bien sur!", action: goToChapter("farmDay") },
     ],
   },
-  farmDay:{
+  farmDay: {
     subtitle: "Tu passe la journée a la ferme de Dwight",
     text: "Tu n'as pas accomplie tes tâches de la journée",
     img: "imgferme.png",
@@ -61,7 +75,7 @@ let chapterObj = {
       },
     ],
   },
-  michealExcuseCafe:  {
+  michealExcuseCafe: {
     subtitle:
       "Maintenant que tu as tasser Dwight de ton chemin, tu veux te faire une tasse de café.",
     text: "Attention! as-tu saluer Jim se matin?? Car si oui tu vas pouvoir te fair un café, si non tu ne pourras pas ",
@@ -79,7 +93,7 @@ let chapterObj = {
       { text: "Tu as réussi!!", action: goToChapter("michealEnterOffice") },
     ],
   },
-  michealPasCafe:  {
+  michealPasCafe: {
     subtitle: "Tu as oublier ta tasse favorite à la maison.",
     text: "Si tu avais salué Jim il t'aurai remis une tasse en guise de cadeau. Meilleur chance la prochiane fois.",
     img: "imgdefaite.png",
@@ -89,41 +103,48 @@ let chapterObj = {
   },
 };
 
-//audio status 
+//audio status
 let audioOn = true;
 let checkboxAudio = document.querySelector(".checkbox-audio");
 audioOn = checkboxAudio.checked;
+localStorage.setItem("audio-status", audioOn);
 // nouvelle version (corriger)
 function goToChapter(chapterName) {
+  //changement de classname pour style
+
+  let body = document.querySelector("body");
+  body.className = " ";
+  let classAddName = chapterObj[chapterName];
+  body.classList.add(classAddName);
   //déclanchement audio
   const soundEffectMicheal = new Audio(
     "assets/audio/michael-scott-thank-you-sound-effect.mp3"
   );
-audioOn = localStorage.getItem("audio-status");
-  if(audioOn == true){
+  let audioOn = localStorage.getItem("audio-status");
+  if (audioOn == true) {
     soundEffectMicheal.currentTime = 0;
     soundEffectMicheal.play();
-  }else {
+  } else {
     soundEffectMicheal.pause();
   }
   localStorage.setItem("audio-status", audioOn);
 
   localStorage.setItem("chapterOngoing", chapterName);
-  
+
   let game = document.querySelector(".game");
   let chapterTitle = game.querySelector(".chapter-title");
   let chapterText = game.querySelector(".chapter-text");
 
-  chapterTitle.innerText = chapterObj[chapterName].subtitle;
-  chapterText.innerText = chapterObj[chapterName].text;
+  chapterTitle.innerText = chapterObj[chapterName][subtitle];
+  chapterText.innerText = chapterObj[chapterName][text];
 
   let chapterImgContainer = document.querySelector(".images-mid");
 
   //verify si video existe
-   
+
   if (chapterObj[chapterName].video != undefined) {
     let videoTag = `<video src="${chapterObj[chapterName].video}" class="image-mid loop muted autoplay playinline `;
-    chapterImgContainer.innerHTML = videoTag; 
+    chapterImgContainer.innerHTML = videoTag;
   } else {
     let imgTag = `<img src="asset/${chapterObj[chapterName].img}" class="image-mid">`;
     chapterImgContainer.innerHTML = imgTag;
@@ -153,11 +174,11 @@ goToChapter("michealEnterOffice");
 
 let coffeCupFound = false;
 
-let activationTasse = function () {
+function activationTasse() {
   coffeCupFound = true;
   goToChapter(michealEnterDesk);
   localStorage.setItem("tassetrouve", true);
-};
+}
 
 let verificationTasse = function () {
   if (coffeCupFound) {
@@ -187,11 +208,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // bouton et fonction reset
 let btnReset = document.querySelector(".btn-reset");
-btnReset.addEventListener("click", function(){
+btnReset.addEventListener("click", function () {
   coffeCupFound = false;
   localStorage.clear();
   goToChapter(michealEnterOffice);
 });
-
-
-
