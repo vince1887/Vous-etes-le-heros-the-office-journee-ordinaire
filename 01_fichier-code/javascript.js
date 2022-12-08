@@ -1,4 +1,6 @@
 //changer de style avec radio
+//style 1 quand tu ne réussi pas et tu dois reccomencer
+//style 2 quand tu a réussi
 let radioStyle = document.querySelectorAll(".style-option");
 radioStyle.forEach(function (radio) {
   radio.addEventListener("change", function () {
