@@ -14,6 +14,24 @@ radioStyle.forEach(function (radio) {
     }
   });
 });
+
+//verification tasse caffé
+
+var coffeCupFound = false;
+
+let activationTasse = function () {
+  coffeCupFound = true;
+  goToChapter(michealEnterDesk);
+  localStorage.setItem("tassetrouve", true);
+};
+let verificationTasse = function () {
+  if (coffeCupFound) {
+    goToChapter(michealFaitCafe);
+  } else {
+    goToChapter(michealPasCafe);
+  }
+};
+
 var chapterObj = {
   michealEnterOffice: {
     subtitle: "Bon matin!",
@@ -171,24 +189,6 @@ function goToChapter(chapterName) {
 }
 
 goToChapter("michealEnterOffice");
-
-//verification tasse caffé
-
-let coffeCupFound = false;
-
-function activationTasse() {
-  coffeCupFound = true;
-  goToChapter(michealEnterDesk);
-  localStorage.setItem("tassetrouve", true);
-}
-
-let verificationTasse = function () {
-  if (coffeCupFound) {
-    goToChapter(michealFaitCafe);
-  } else {
-    goToChapter(michealPasCafe);
-  }
-};
 
 //verification onload de la page si local storage "existe"
 

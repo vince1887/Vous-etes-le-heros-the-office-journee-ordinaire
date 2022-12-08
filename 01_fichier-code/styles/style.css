@@ -167,6 +167,55 @@ body.style1 .game {
   background-color: rgb(202, 65, 61);
 }
 
-body.style1 .anim1 {
+body.style1 .anim-thumbs {
   opacity: 100%;
+  transition: opacity 300ms ease-in;
+}
+.thumb {
+  width: 250px;
+}
+
+.tleft {
+  transform: translateX(-70%);
+}
+.tright {
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1) translateX(-70%);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
+.anim-thumbs {
+  position: absolute;
+  transform: translateY(50%);
+  animation-name: up-down;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  opacity: 0;
+  transition: opacity 100ms ease-in;
+}
+
+@keyframes up-down {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(50%);
+  }
+}
+
+body.style1 .btnGroupe,
+body.style1 .btn-reset {
+  opacity: 0;
+}
+
+body.style2 .game {
+  background-color: var();
+}
+
+body.style2 .text {
+  color: var(black);
 }
