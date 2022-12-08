@@ -219,7 +219,7 @@ body.style2 .anim-fete {
   opacity: 0;
   position: absolute;
   animation-name: side-to-side;
-  animation-duration: 1.7s;
+  animation-duration: 2s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
   animation-timing-function: ease-in-out;
